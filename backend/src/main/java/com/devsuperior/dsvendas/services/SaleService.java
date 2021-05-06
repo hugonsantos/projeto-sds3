@@ -1,5 +1,6 @@
 package com.devsuperior.dsvendas.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.dsvendas.dto.SaleDTO;
+import com.devsuperior.dsvendas.dto.SalesSuccessDTO;
+import com.devsuperior.dsvendas.dto.SalesSumDTO;
 import com.devsuperior.dsvendas.entities.Sale;
 import com.devsuperior.dsvendas.repositories.SaleRepository;
 import com.devsuperior.dsvendas.repositories.SellerRepository;
@@ -32,5 +35,15 @@ public class SaleService {
 	public SaleDTO findSale(Long id) {
 		Optional<Sale> opt = repository.findById(id);
 		return opt.map(x -> new SaleDTO(x)).orElseThrow(() -> new RuntimeException());
+	}
+	
+	@Transactional(readOnly=true)
+	public List<SalesSumDTO> amountGroupedBySeller() {
+		return repository.amountGroupedBySeller();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<SalesSuccessDTO> successGroupedBySeller() {
+		return repository.successGroupedBySeller();
 	}
 }
