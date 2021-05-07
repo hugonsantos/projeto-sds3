@@ -19,7 +19,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "name": "frontend",
+    "scripts": {
+    "build": "babel src -d lib",
+    "test": "jest"
+  }
   },
   "include": [
     "src"
