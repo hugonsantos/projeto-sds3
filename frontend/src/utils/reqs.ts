@@ -1,1 +1,1 @@
-export const B_URL = process.env.BACKEND_URL;
+export const B_URL = "https://sds3-back.herokuapp.com";
