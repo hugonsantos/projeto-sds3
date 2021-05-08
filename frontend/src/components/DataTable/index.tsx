@@ -3,7 +3,7 @@ import Pagination from "components/Pagination";
 import { useEffect, useState } from "react";
 import { SalePage } from "types/trade-in";
 import { formatLocalDate } from "utils/format";
-import { BASE_URL } from "utils/requests";
+import { B_URL } from "utils/reqs";
 
 function DataTable() {
 
@@ -17,7 +17,7 @@ function DataTable() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/sales?page=${activePage}&size=20&sort=date,desc`).then(response => {
+        axios.get(`${B_URL}/sales?page=${activePage}&size=20&sort=date,desc`).then(response => {
             setPage(response.data);
         });
     }, [activePage]);
